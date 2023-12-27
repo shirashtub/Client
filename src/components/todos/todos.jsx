@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Todo from "./todo";
 // import { todoGet } from "../../redux/todoSlice";
@@ -34,7 +34,6 @@ const Todos = () => {
                 <Typography variant="h4" xs={2} sx={{ color: '#b60a60' }}>המשימות שלי</Typography>
                 <Button xs={2} sx={{ borderColor: '#b60a60', color: '#b60a60'}} color="secondary" variant="outlined" endIcon={<AddIcon fontSize="small"/>}
                  onClick={()=>setOpen(true)}>הוסף משימה</Button>
-                 {/* {return(<FormDialog label='משימה חדשה' type="todo"/>)} */}
             </Grid>
             <Grid container direction="column" justifyContent="center" alignItems="stretch" padding={5}>
                 {

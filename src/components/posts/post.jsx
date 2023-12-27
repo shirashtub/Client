@@ -15,22 +15,22 @@ import { Button, TextareaAutosize } from "@mui/material";
 const Post = (props) => {
     const [edit, setEdit] = useState(false)
     const [moreOrLess, setMoreOrLess] = useState(false)
-    const [words, setWords] = useState((props.post.content).slice(0, 30))
-    const [content, setContent] = useState(props.post.content)
+    const [words, setWords] = useState((props.post.Content).slice(0, 30))
+    const [content, setContent] = useState(props.post.Content)
     const dispatch = useDispatch()
 
     const editPost = () => {
         setEdit(false)
-        dispatch(postPut({id: props.post.id, content: content}))
+        dispatch(postPut({Id: props.post.Id, Content: content}))
     }
 
     const more = () => {
-        setWords(props.post.content)
+        setWords(props.post.Content)
         setMoreOrLess(true)
     }
     
     const less = () => {
-        setWords((props.post.content).slice(0, 30))
+        setWords((props.post.Content).slice(0, 30))
         setMoreOrLess(false)
     }
 
@@ -39,7 +39,7 @@ const Post = (props) => {
         {!edit?
         <Grid container direction="column" justifyContent="space-between" padding={5} width={'30%'}>
             <Grid justifyContent="space-between">
-                <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} xs={1} color="secondary" defaultChecked={props.post.like} onClick={()=>dispatch(postLikePut(props.post.id))}/>
+                <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} xs={1} color="secondary" defaultChecked={props.post.Like} onClick={()=>dispatch(postLikePut(props.post.Id))}/>
                 <Typography variant="h5" xs={2} sx={{ color: '#4acfa8' }} >מאמר:</Typography>
                 <Typography xs={4} sx={{ color: '#4acfa8' }}>{words}</Typography>
             </Grid>
@@ -49,14 +49,14 @@ const Post = (props) => {
                     :<Button onClick={()=>more()} color="success" size="small">קרא עוד</Button>
                 }
                 <Grid justifyContent="space-between">
-                    <IconButton onClick={()=>dispatch(postDelete(props.post.id))} xs={1} sx={{ color: '#b60a60' }}><DeleteIcon /></IconButton>
+                    <IconButton onClick={()=>dispatch(postDelete(props.post.Id))} xs={1} sx={{ color: '#b60a60' }}><DeleteIcon /></IconButton>
                     <IconButton onClick={()=>setEdit(true)} xs={1} sx={{ color: '#b60a60' }}><BorderColorIcon /></IconButton>
                 </Grid>
             </Grid>
         </Grid>:
         <Grid container direction="column" justifyContent="space-between" alignItems="flex-start" padding={5} width={'30%'}>
-            <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} xs={1} color="secondary" defaultChecked={props.post.like} onClick={()=>dispatch(postLikePut(props.post.id))}/>
-            <TextareaAutosize label="מאמר" variant="outlined" defaultValue={props.post.content} color="success" size="normal" onChange={(e)=>setContent(e.target.value)}/>
+            <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} xs={1} color="secondary" defaultChecked={props.post.Like} onClick={()=>dispatch(postLikePut(props.post.Id))}/>
+            <TextareaAutosize label="מאמר" variant="outlined" defaultValue={props.post.Content} color="success" size="normal" onChange={(e)=>setContent(e.target.value)}/>
             <IconButton onClick={()=>editPost()} xs={2} sx={{ color: '#b60a60' }}><ArrowBackIcon /></IconButton>
         </Grid> }
         </>

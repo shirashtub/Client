@@ -8,7 +8,7 @@ import Toolbar from '@mui/material/Toolbar';
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/home/home"
 import { CircularProgress } from '@mui/material';
-// import Todos from './components/todos/todos';
+
 const LazyTodo = React.lazy(()=>import("./components/todos/todos"))
 const LazyPost = React.lazy(()=>import("./components/posts/posts"))
 
@@ -19,7 +19,7 @@ function App() {
         <CssBaseline />
         <AppBar component="nav" sx={{backgroundColor: '#4acfa8'}}>
           <Toolbar>
-            <Box sx={{ display: { xs: 'none', sm: 'block' }, '& :not(style)': {ml: 20}}}>
+            <Box sx={{ display: { xs: 'none', sm: 'block' }, '& :not(style)': {ml: 10}}}>
               <Link href="/" underline='none' sx={{ color: '#b60a60' }}>בית</Link>
               <Link href="/todo" underline='none' sx={{ color: '#b60a60' }}>משימות</Link>
               <Link href="/post" underline='none' sx={{ color: '#b60a60' }}>מאמרים</Link>
