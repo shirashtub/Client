@@ -2,10 +2,10 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const postArr = {
     arr: [
-        {id: 1, content: "אאאאאא אאאאא אאאאאא אאאאאאא אאאאאאאא אאאאאאאא אאאאאאאאאא אאאא אאאאאאאא אאאאאאא אאאאאא אאאאאאאא אאאא אאאאא", like: false},
-        {id: 2, content: "בבבבבבבב בבבב בבבבב בבבבב בבבבבבבבבב בבבבב בבבבבבבבב בבבבב בבבבבב בבבבבב", like: true},
-        {id: 3, content: "גגגגגג גגגגגגג גגגגגג", like: false},
-        {id: 4, content: "דדדדדדדד דדדד דדדדדד דדדדד דדדדדדדד דדדדדדדד דדדדד", like: false}
+        {Id: 1, Content: "אאאאאא אאאאא אאאאאא אאאאאאא אאאאאאאא אאאאאאאא אאאאאאאאאא אאאא אאאאאאאא אאאאאאא אאאאאא אאאאאאאא אאאא אאאאא", Like: false},
+        {Id: 2, Content: "בבבבבבבב בבבב בבבבב בבבבב בבבבבבבבבב בבבבב בבבבבבבבב בבבבב בבבבבב בבבבבב", Like: true},
+        {Id: 3, Content: "גגגגגג גגגגגגג גגגגגג", Like: false},
+        {Id: 4, Content: "דדדדדדדד דדדד דדדדדד דדדדד דדדדדדדד דדדדדדדד דדדדד", Like: false}
     ],
     id: 4
 }
@@ -20,26 +20,26 @@ const PostSlice = createSlice({
         //     return posts
         // },
         postPost: (state, actions) => {
-            const post = {id: ++state.id, content: actions.payload, like: false}
+            const post = {Id: ++state.id, Content: actions.payload, Like: false}
             state.arr = [...state.arr, post]
         },
         postPut: (state, actions) => {
             state.arr.map((item)=>{
-                if(item.id === actions.payload.id){
-                    item.content = actions.payload.content
+                if(item.Id === actions.payload.Id){
+                    item.Content = actions.payload.Content
                 }
             })
         },
         postLikePut: (state, actions) => {
             state.arr.map((item)=>{
-                if(item.id === actions.payload){
-                    item.like = !item.like
+                if(item.Id === actions.payload){
+                    item.Like = !item.Like
                 }
             })
         },
         postDelete: (state, actions) => {
             state.arr = state.arr.filter((item)=>{
-                return item.id !== actions.payload
+                return item.Id !== actions.payload
             })
         }
     }

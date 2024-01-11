@@ -33,7 +33,6 @@ const Posts = () => {
                 <Typography variant="h4" xs={2} sx={{ color: '#b60a60' }}>המאמרים שלי</Typography>
                 <Button xs={2} sx={{ borderColor: '#b60a60', color: '#b60a60'}} color="secondary" variant="outlined" endIcon={<AddIcon fontSize="small"/>}
                  onClick={()=>setOpen(true)}>הוסף מאמר</Button>
-                 {/* {return(<FormDialog label='משימה חדשה' type="todo"/>)} */}
             </Grid>
             <Grid container direction="row" justifyContent="flex-start"  alignItems="stretch" padding={5}>
                 {

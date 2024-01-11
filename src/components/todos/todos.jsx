@@ -16,12 +16,11 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { todoGet, todoPost } from "../../redux/todoSlice";
 
 const Todos = () => {
+    const dispatch = useDispatch()
+    dispatch(todoGet())
     const todos = useSelector((myStore)=>myStore.TodoSlice.arr)
     const [open, setOpen] = useState(false);
     const [newTodo, setNewTodo] = useState('');
-    const dispatch = useDispatch()
-
-    dispatch(todoGet())
 
     const addTodo = () => {
         setOpen(false)
