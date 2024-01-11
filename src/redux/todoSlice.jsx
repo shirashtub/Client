@@ -21,6 +21,7 @@ const TodoSlice = createSlice({
             httpGet('https://localhost:7007/api/Todo')
             // console.log(res);
             // return res
+            actions.payload = res;
         },
         todoPost: (state, actions) => {
             const httpPost = UsePost()
