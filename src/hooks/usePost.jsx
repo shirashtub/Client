@@ -5,7 +5,7 @@ const UsePost = () => {
     const post = async (url, data) => {
         try {
             await axios.post(url, data)
-            alert("good")
+            alert("good post")
         } catch (error) {
             console.error(error)
         }

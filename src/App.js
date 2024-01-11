@@ -8,11 +8,15 @@ import Toolbar from '@mui/material/Toolbar';
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/home/home"
 import { CircularProgress } from '@mui/material';
+// import { useDispatch } from 'react-redux';
+// import { todoGet } from "./redux/todoSlice";
 
 const LazyTodo = React.lazy(()=>import("./components/todos/todos"))
 const LazyPost = React.lazy(()=>import("./components/posts/posts"))
 
 function App() {
+  // const dispatch = useDispatch();
+
   return (
     <Box sx={{ direction: 'rtl'}}>
       <Box sx={{ display: 'flex' }}>

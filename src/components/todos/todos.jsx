@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Todo from "./todo";
 // import { todoGet } from "../../redux/todoSlice";
@@ -16,12 +16,11 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { todoGet, todoPost } from "../../redux/todoSlice";
 
 const Todos = () => {
+    const dispatch = useDispatch()
+    dispatch(todoGet())
     const todos = useSelector((myStore)=>myStore.TodoSlice.arr)
     const [open, setOpen] = useState(false);
     const [newTodo, setNewTodo] = useState('');
-    const dispatch = useDispatch()
-
-    dispatch(todoGet())
 
     const addTodo = () => {
         setOpen(false)
@@ -34,6 +33,7 @@ const Todos = () => {
                 <Typography variant="h4" xs={2} sx={{ color: '#b60a60' }}>המשימות שלי</Typography>
                 <Button xs={2} sx={{ borderColor: '#b60a60', color: '#b60a60'}} color="secondary" variant="outlined" endIcon={<AddIcon fontSize="small"/>}
                  onClick={()=>setOpen(true)}>הוסף משימה</Button>
+                 {/* {return(<FormDialog label='משימה חדשה' type="todo"/>)} */}
             </Grid>
             <Grid container direction="column" justifyContent="center" alignItems="stretch" padding={5}>
                 {
