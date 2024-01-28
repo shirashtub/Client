@@ -2,10 +2,10 @@ import axios from 'axios'
 
 const UsePut = () => {
 
-    const put = async (url, id, todo) => {
+    const put = async (url, data) => {
         try {
-            await axios.put(url, id, todo)
-            alert("food put")
+            await axios.put(url, data)
+            alert("good put")
         } catch (error) {
             console.error(error)
         }

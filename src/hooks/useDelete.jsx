@@ -2,9 +2,9 @@ import axios from 'axios'
 
 const UseDelete = () => {
 
-    const Delete = async (url, id) => {
+    const Delete = async (url) => {
         try {
-            await axios.delete(url, id)
+            await axios.delete(url)
             alert("good del")
         } catch (error) {
             console.error(error)
