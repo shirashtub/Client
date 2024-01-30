@@ -13,14 +13,15 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { postPost } from "../../redux/postSlice";
+import { postGet, postPost } from "../../redux/postSlice";
 import { TextareaAutosize } from "@mui/material";
 
 const Posts = () => {
+    const dispatch = useDispatch()
+    dispatch(postGet())
     const posts = useSelector((myStore)=>myStore.PostSlice.arr)
     const [open, setOpen] = useState(false);
     const [newPost, setNewPost] = useState('');
-    const dispatch = useDispatch()
 
     const addPost = () => {
         setOpen(false)

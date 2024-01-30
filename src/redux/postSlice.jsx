@@ -1,49 +1,41 @@
 import {createSlice} from "@reduxjs/toolkit";
+import UseGet from "../hooks/useGet";
+import UsePost from "../hooks/usePost";
+import UsePut from "../hooks/usePut";
+import UseDelete from "../hooks/useDelete";
+import UseIdPut from "../hooks/useIdPut";
 
 const postArr = {
-    arr: [
-        {Id: 1, Content: "אאאאאא אאאאא אאאאאא אאאאאאא אאאאאאאא אאאאאאאא אאאאאאאאאא אאאא אאאאאאאא אאאאאאא אאאאאא אאאאאאאא אאאא אאאאא", Like: false},
-        {Id: 2, Content: "בבבבבבבב בבבב בבבבב בבבבב בבבבבבבבבב בבבבב בבבבבבבבב בבבבב בבבבבב בבבבבב", Like: true},
-        {Id: 3, Content: "גגגגגג גגגגגגג גגגגגג", Like: false},
-        {Id: 4, Content: "דדדדדדדד דדדד דדדדדד דדדדד דדדדדדדד דדדדדדדד דדדדד", Like: false}
-    ],
-    id: 4
+    arr: []
 }
 
 const PostSlice = createSlice({
     name: "arr",
     initialState: postArr,
     reducers: {
-        // postGet: (state, actions) => {
-        //     const [httpGet, posts] = UseGet()
-        //     httpGet('post')
-        //     return posts
-        // },
+        postGet: (state, actions) => {
+            const [httpGet, res] = UseGet()
+            httpGet('https://localhost:7007/api/Post')
+            state.arr = res
+        },
         postPost: (state, actions) => {
-            const post = {Id: ++state.id, Content: actions.payload, Like: false}
-            state.arr = [...state.arr, post]
+            const httpPost = UsePost()
+            httpPost('https://localhost:7007/api/Post', actions.payload)
         },
         postPut: (state, actions) => {
-            state.arr.map((item)=>{
-                if(item.Id === actions.payload.Id){
-                    item.Content = actions.payload.Content
-                }
-            })
+            const httpPut = UsePut()
+            httpPut('https://localhost:7007/api/Post/'+actions.payload.id, actions.payload.content)
         },
         postLikePut: (state, actions) => {
-            state.arr.map((item)=>{
-                if(item.Id === actions.payload){
-                    item.Like = !item.Like
-                }
-            })
+            const httpPut = UseIdPut()
+            httpPut('https://localhost:7007/api/Post/like/'+actions.payload)
         },
         postDelete: (state, actions) => {
-            state.arr = state.arr.filter((item)=>{
-                return item.Id !== actions.payload
-            })
+            const httpDelete = UseDelete()
+            httpDelete('https://localhost:7007/api/Post/'+actions.payload)
         }
     }
 })
 
-export const {postPost, postPut, postLikePut, postDelete} = PostSlice.actions
+export const { postGet, postPost, postPut, postLikePut, postDelete} = PostSlice.actions
 export default PostSlice.reducer

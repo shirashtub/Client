@@ -3,9 +3,9 @@ import UseGet from "../hooks/useGet";
 import UsePost from "../hooks/usePost";
 import UsePut from "../hooks/usePut";
 import UseDelete from "../hooks/useDelete";
+import UseIdPut from "../hooks/useIdPut";
 const todoArr = {
-    arr: [],
-    id: 15
+    arr: []
 }
 
 const TodoSlice = createSlice({
@@ -18,36 +18,21 @@ const TodoSlice = createSlice({
             state.arr = res
         },
         todoPost: (state, actions) => {
+            // alert(actions.payload + " enter hello " + typeof(actions.payload))
             const httpPost = UsePost()
-            const d = new Date()
-            const nowDate = d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate()
-            const todo = {id: ++state.id, description: actions.payload, date: nowDate, isComplete: false}
-            // state.arr = [...state.arr, todo]
-            httpPost('https://localhost:7007/api/Todo', todo)
+            httpPost('https://localhost:7007/api/Todo', actions.payload)
         },
         todoPut: (state, actions) => {
-            // state.arr.map((item)=>{
-            //     if(item.id === actions.payload.id){
-            //         item.date = actions.payload.date
-            //         item.description = actions.payload.description
-            //     }
-            // })
             const httpPut = UsePut()
             httpPut('https://localhost:7007/api/Todo/'+actions.payload.id, actions.payload)
         },
         todoCompletePut: (state, actions) => {
-            state.arr.map((item)=>{
-                if(item.id === actions.payload){
-                    item.isComplete = !item.isComplete
-                }
-            })
+            const httpPut = UseIdPut()
+            httpPut('https://localhost:7007/api/Todo/complete/'+actions.payload)
         },
         todoDelete: (state, actions) => {
-            // state.arr = state.arr.filter((item)=>{
-            //     return item.id !== actions.payload
-            // })
             const httpDelete = UseDelete()
-            httpDelete('https://localhost:7007/api/Todo'+actions.payload)
+            httpDelete('https://localhost:7007/api/Todo/'+actions.payload)
         }
     }
 })
