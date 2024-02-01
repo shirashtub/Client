@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Todo from "./todo";
 // import { todoGet } from "../../redux/todoSlice";
@@ -14,10 +14,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { todoGet, todoPost } from "../../redux/todoSlice";
-import UseGet from "../../hooks/useGet";
 
 const Todos = () => {
-
     const dispatch = useDispatch()
     dispatch(todoGet())
     const todos = useSelector((myStore)=>myStore.TodoSlice.arr)

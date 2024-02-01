@@ -4,7 +4,8 @@ const UsePut = () => {
 
     const put = async (url, data) => {
         try {
-            await axios.put(url, data)
+            debugger
+           await axios.put(url, data)
             alert("good put")
         } catch (error) {
             console.error(error)

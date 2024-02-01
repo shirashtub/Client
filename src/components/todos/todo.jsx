@@ -18,7 +18,7 @@ const Todo = (props) => {
 
     const editTodo = () => {
         setEdit(false)
-        dispatch(todoPut({id: props.todo.id, description: description, date: date}))
+        dispatch(todoPut({id: props.todo.id, description: description, date: date, isComplete: props.todo.isComplete}))
     }
 
     return(
