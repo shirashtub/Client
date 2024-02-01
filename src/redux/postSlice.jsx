@@ -20,11 +20,13 @@ const PostSlice = createSlice({
         },
         postPost: (state, actions) => {
             const httpPost = UsePost()
-            httpPost('https://localhost:7007/api/Post', actions.payload)
+            const obj = {content: actions.payload}
+            httpPost('https://localhost:7007/api/Post', obj)
         },
         postPut: (state, actions) => {
             const httpPut = UsePut()
-            httpPut('https://localhost:7007/api/Post/'+actions.payload.id, actions.payload.content)
+            const obj = {content: actions.payload.content}
+            httpPut('https://localhost:7007/api/Post/'+actions.payload.id, obj)
         },
         postLikePut: (state, actions) => {
             const httpPut = UseIdPut()
