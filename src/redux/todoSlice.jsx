@@ -18,9 +18,9 @@ const TodoSlice = createSlice({
             state.arr = res
         },
         todoPost: (state, actions) => {
-            // alert(actions.payload + " enter hello " + typeof(actions.payload))
             const httpPost = UsePost()
-            httpPost('https://localhost:7007/api/Todo', actions.payload)
+            const obj = {description: actions.payload}
+            httpPost('https://localhost:7007/api/Todo', obj)
         },
         todoPut: (state, actions) => {
             const httpPut = UsePut()
